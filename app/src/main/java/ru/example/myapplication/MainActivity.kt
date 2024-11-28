@@ -1,6 +1,7 @@
 package ru.example.myapplication
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -24,9 +25,32 @@ class MainActivity : AppCompatActivity() {
         val adapter = KittyAdapter(kittyArray)
         binding.RV.adapter = adapter
         binding.lifecycleOwner = this
+        for(i in 0..kittyArray.size){
+            kittyArray[i].image = fromDrawabletoBitMap(i)
 
+        }
     }
-    fun fromDrawabletoBitMap():Bitmap{
-        reco
+    fun fromDrawabletoBitMap(position:Int):Bitmap{
+        var drawable = when(position%4){
+            0 -> {
+                R.drawable.kitty1
+            }
+            1 -> {
+                R.drawable.kitty2
+            }
+            2 -> {
+                R.drawable.kitty3
+            }
+            3 -> {
+                R.drawable.kytty4
+            }
+
+            else -> {
+                R.drawable.kitty5
+            }
+        }
+        return BitmapFactory.decodeResource(resources, drawable)
+
+
     }
 }

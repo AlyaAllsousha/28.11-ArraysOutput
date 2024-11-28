@@ -6,6 +6,6 @@ data class Kitty(
     val color: String= "invisible",
     val name: String = "kot",
     val poroda: String = "Scotland Downears",
-    val image:Bitmap? = null
+    var image:Bitmap? = null
 ) {
 }

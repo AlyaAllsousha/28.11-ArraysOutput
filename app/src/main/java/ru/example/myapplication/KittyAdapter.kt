@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.example.myapplication.databinding.ActivityMainBinding
+import ru.example.myapplication.databinding.CardkittyBinding
 
 class KittyAdapter(
     val kyttyArray: ArrayList<Kitty>
@@ -17,8 +18,9 @@ class KittyAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KittyHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.cardkitty, parent, false)
-        return KittyHolder(view)
+        val binding = DataBindingUtil.inflate<CardkittyBinding>(layoutInflater, R.layout.cardkitty, parent, false)
+
+        return KittyHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -32,17 +34,17 @@ class KittyAdapter(
         holder.porodaTv?.text = kitty.poroda
         holder.imageIv?.setImageBitmap(kitty.image)
     }
-    inner class KittyHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class KittyHolder(binding: CardkittyBinding): RecyclerView.ViewHolder(binding.root){
 
         var nameTv: TextView? = null
         var colorTv: TextView?= null
         var porodaTv: TextView? = null
         var imageIv: ImageView? = null
         init{
-            nameTv = itemView.findViewById<TextView>(R.id.Name)
-            colorTv = itemView.findViewById(R.id.Color)
-            porodaTv = itemView.findViewById(R.id.Poroda)
-            imageIv =itemView.findViewById(R.id.IV)
+            nameTv = binding.Name
+            colorTv = binding.Color
+            porodaTv = binding.Poroda
+            imageIv =binding.IV
         }
     }
 }
