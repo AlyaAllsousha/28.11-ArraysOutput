@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding:ActivityMainBinding  = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setContentView(binding.root)
+        val kittyArray:ArrayList<Kitty> =
+
 
     }
 }

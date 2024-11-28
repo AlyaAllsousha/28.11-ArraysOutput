@@ -1,6 +1,7 @@
 package ru.example.myapplication
 
 import android.graphics.Bitmap
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -15,7 +16,9 @@ class KittyAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KittyHolder {
-
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view = layoutInflater.inflate(R.layout.cardkitty, parent, false)
+        return KittyHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -23,8 +26,14 @@ class KittyAdapter(
     }
 
     override fun onBindViewHolder(holder: KittyHolder, position: Int) {
+        val kitty = kyttyArray[position]
+        holder.nameTv?.text = kitty.name
+        holder.colorTv?.text = kitty.color
+        holder.porodaTv?.text = kitty.poroda
+        holder.imageIv?.setImageBitmap(kitty.image)
     }
     inner class KittyHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+
         var nameTv: TextView? = null
         var colorTv: TextView?= null
         var porodaTv: TextView? = null
