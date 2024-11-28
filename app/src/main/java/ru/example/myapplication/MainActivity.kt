@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         val adapter = KittyAdapter(kittyArray)
         binding.RV.adapter = adapter
         binding.lifecycleOwner = this
-        for(i in 0..kittyArray.size){
+        for(i in 0..kittyArray.size-1){
             kittyArray[i].image = fromDrawabletoBitMap(i)
 
         }
     }
     fun fromDrawabletoBitMap(position:Int):Bitmap{
-        var drawable = when(position%4){
+        val drawable = when(position%4){
             0 -> {
                 R.drawable.kitty1
             }
@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return BitmapFactory.decodeResource(resources, drawable)
-
 
     }
 }
